@@ -54,6 +54,57 @@ func fibonacci(of n: Int) -> Int {
     return fibonacci(of: n - 1) + fibonacci(of: n - 2)
 }
 
-#Playground {
+func addOneTo(_ value: inout Int) {
+    value += 1
+}
+
+/// Calculates the average of three values
+/// - Parameters:
+/// - a: The first value.
+/// - b: The second value.
+/// - c: The third value.
+/// - Returns: The average of the three values.
+func calculateAverage(of a: Double, and b: Double, and c: Double) -> Double {
+    let total = a + b + c
+    let average = total / 3
+    return average
+}
+
+func isNumberDivisible(_ number: Int, by divisor: Int) -> Bool {
+    number % divisor == 0
+}
+
+func isPrime(_ number: Int) -> Bool {
+    if number < 1 {
+        return false
+    }
     
+    
+    for divisor in 2..<number {
+        if isNumberDivisible(number, by: divisor) {
+            return false
+        }
+    }
+    
+    return true
+}
+
+func divideIfWhole(_ number: Int, by divisor: Int) -> Int? {
+    if number % divisor != 0 {
+        return nil
+    }
+    
+    return number / divisor
+}
+
+func printNumber(_ number: Int???) {
+    guard let number = number else { return }
+    guard let number = number else { return }
+    guard let number = number else { return }
+    print(number)
+}
+
+#Playground {
+    let num = divideIfWhole(10, by: 3) ?? 0
+    print("It divides \(num) times.")
 }
