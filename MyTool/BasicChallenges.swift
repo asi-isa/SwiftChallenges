@@ -104,7 +104,77 @@ func printNumber(_ number: Int???) {
     print(number)
 }
 
+func removingOnce(_ item: Int, from array: [Int]) -> [Int] {
+    guard let index = array.firstIndex(of: item) else {
+        return array
+    }
+    
+    var copy = array
+    copy.remove(at: index)
+    
+    return copy
+}
+
+func removing(_ item: Int, from array: [Int]) -> [Int] {
+    var copy = array
+    
+    copy.removeAll { $0 == item }
+    
+    return copy
+}
+
+func reversed(_ array: [Int]) -> [Int] {
+    var reversedArray = [Int]()
+    reversedArray.reserveCapacity(array.count)
+    
+    for i in 0..<array.count {
+        reversedArray.append(array[array.count - i - 1])
+    }
+    
+    return reversedArray
+}
+
+func middle(_ array: [Int]) -> Int? {
+    guard !array.isEmpty else { return nil }
+    
+    let middle = array.count / 2
+    
+    if array.count.isMultiple(of: 2) {
+        return (array[middle - 1] + array[middle]) / 2
+    }
+    
+    return array[array.count / 2]
+}
+
+func minMax(of numbers: [Int]) -> (min: Int, max: Int)? {
+    guard let first = numbers.first else { return nil }
+    
+    var min = first
+    var max = first
+    
+    for num in numbers {
+        if num < min {
+            min = num
+        }
+        
+        if num > max {
+            max = num
+        }
+    }
+    
+    return (min, max)
+}
+
+func printLongValues(_ dict: [String: String]) {
+    for (_, value) in dict {
+        if value.count > 8 {
+            print(value)
+        }
+    }
+}
+
 #Playground {
-    let num = divideIfWhole(10, by: 3) ?? 0
-    print("It divides \(num) times.")
+    let array1 = [1,2,4,4,5]
+    
+    printLongValues(["NY": "New York", "CA": "California"])
 }
